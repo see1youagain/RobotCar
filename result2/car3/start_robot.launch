@@ -1,0 +1,27 @@
+<launch>
+
+    <!-- 1. 导航文件启动 -->
+    <include file="$(find robot_navigation)/launch/robot_navigation.launch" />
+
+    <!-- 2. 声音指令播报 -->
+    <node name="sound_play_node" pkg="sound_play" type="soundplay_node.py" output="screen" />
+
+    <!-- 4. 声音输出节点 -->
+    <node name="sound_out_node" pkg="eprobot_start" type="sound_out_node.py" output="screen" />
+
+    <!-- 5. 导航程序启动 -->
+    <node name="smart_pharmacy_node" pkg="eprobot_start" type="smart_pharmacy.py" output="screen" />
+
+    <!-- 6. 摄像头 -->
+    <node name="web_video_server_node" pkg="web_video_server" type="web_video_server" output="screen" />
+
+    <!-- 7. 通信启动 -->
+    <node name="mySocketServer_node" pkg="eprobot_start" type="mySocketServer.py" output="screen" />
+
+    <!-- 8. 规划文件启动 -->
+    <node name="roadPlan_node" pkg="eprobot_start" type="roadPlan.py" output="screen" />
+
+    <include file="$(find astra_camera)/launch/astra.launch" />
+
+
+</launch>
